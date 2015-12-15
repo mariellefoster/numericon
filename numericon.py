@@ -1,3 +1,5 @@
+import math
+
 def is_happy(n):
     h = set()
     n = str(n)
@@ -14,7 +16,20 @@ def is_happy(n):
 
 
 def bin_rep(n):
-    pass
+    i = -1
+    n1 = n
+    while n1 > 0:
+        i += 1
+        n1 = n1/2
+    bin = ""
+    for j in range(i, -1, -1):
+        jpow = pow(2, j)
+        if jpow <= n:
+            bin += "1"
+            n = n % jpow
+        else:
+            bin += "0"
+    return bin
 
 def main():
 
@@ -25,10 +40,11 @@ def main():
         inpt = raw_input("Enter your integer here: ")
 
         while not inpt.isdigit() and inpt != "q":
-            inpt = raw_input("Enter a real integer here (you goofed on your last one: ")
+            inpt = raw_input("Enter a real integer here (you goofed on your last one): ")
 
         if inpt != "q": 
             n = int(inpt)
+            print "~~~~~~~~~~"
         
 
         ###BASIC###
@@ -38,7 +54,7 @@ def main():
                 print "%i is Happy" % n
 
             #binary representation
-            print bin_rep(n)
+            print "Binary representation of %s: %s" % (n, bin_rep(n))
 
 
         ###PRIME###
