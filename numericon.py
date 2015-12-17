@@ -32,6 +32,28 @@ def bin_rep(n):
             bin += "0"
     return bin
 
+def simple_prime_test(n):
+    k = int(math.sqrt(n))+1
+    factors = []
+    for i in range(2, k):
+        fact = 0
+        while n%i == 0:
+            n = n/i
+            fact += 1
+        if fact > 0:
+            factors.append((i, fact))
+        if n == 1:
+            return factors
+    if n > 1:
+        factors.append((n, 1))
+    return factors
+
+def pretty_prime_factors(prime):
+    val = ""
+    for tup in prime:
+        val += str(tup[0]) + "^" + str(tup[1]) + " * "
+
+    return val[:len(val)-2]
 
 
 
@@ -60,50 +82,58 @@ def main():
             print "Binary representation of %s: %s" % (n, bin_rep(n))
 
 
-        ###PRIME###
+            ###PRIME###
+
+            #if PRIME
+            prime = simple_prime_test(n)
+            if prime == []:
+                print n, "is a prime number."
+                
         
-            #wilson prime
+                #wilson prime
 
-            #sophie germain
+                #sophie germain
 
-            #prime
+                #prime
 
-            #emirp primes
-        
-        ###IF NOT PRIME###
+                #emirp primes
+            
+            ###IF NOT PRIME###
+            else:
+                print "Prime Factorization: ", pretty_prime_factors(prime)
 
-            #prime factorization
+                #prime factorization
 
-            #achilles number (all factors are squares or more)
+                #achilles number (all factors are squares or more)
 
-            #carmichael
-            if carmichael_test(n) == True:
-                print "%i is a Carmichael number" % n
+                #carmichael
+                if carmichael_test(n) == True:
+                    print "%i is a Carmichael number" % n
 
-            #amicable numbers
-            # Let's take all the proper divisors of 220 (that is to say, 
-            # all its divisors that leave no remainder, including the number 1, 
-            # and excluding the number itself) and all them up:
+                #amicable numbers
+                # Let's take all the proper divisors of 220 (that is to say, 
+                # all its divisors that leave no remainder, including the number 1, 
+                # and excluding the number itself) and all them up:
 
-            #abundant numbers
+                #abundant numbers
 
-            #weird numbers
+                #weird numbers
 
-            #untouchable numbers
+                #untouchable numbers
 
-            #perfect numbers
+                #perfect numbers
 
 
-        ###OTHER###
+            ###OTHER###
 
-            #reciprocal base ten fraction
+                #reciprocal base ten fraction
 
-            #representation as the sum of two squares
+                #representation as the sum of two squares
 
-            #repunit, repdigit, and repunit primes
+                #repunit, repdigit, and repunit primes
 
-            #narcissistic numbers
-
+                #narcissistic numbers
+            print
         #
 
 main()
