@@ -2,13 +2,13 @@
 #takes a while, looking into faster algorithms
 import math
 
-def carmichael(i):
+def carmichael_test(i):
 	n = 2
 	while n < i:
 		if (n**i % i) != n:
-			return
+			return False
 		n += 1
-	print "carmichael: " + str(i)
+	return True
 
 def composite(i):
 	n = 2

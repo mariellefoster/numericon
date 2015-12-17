@@ -1,4 +1,5 @@
 import math
+from carmichael import *
 
 def is_happy(n):
     h = set()
@@ -31,6 +32,9 @@ def bin_rep(n):
             bin += "0"
     return bin
 
+
+
+
 def main():
 
     inpt = None
@@ -46,8 +50,7 @@ def main():
             n = int(inpt)
             print "~~~~~~~~~~"
         
-
-        ###BASIC###
+            ###BASIC###
 
             #happy number
             if is_happy(n):
@@ -74,6 +77,8 @@ def main():
             #achilles number (all factors are squares or more)
 
             #carmichael
+            if carmichael_test(n) == True:
+                print "%i is a Carmichael number" % n
 
             #amicable numbers
             # Let's take all the proper divisors of 220 (that is to say, 
