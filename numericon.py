@@ -55,7 +55,11 @@ def pretty_prime_factors(prime):
 
     return val[:len(val)-2]
 
-
+def achilles(prime_fact):
+    for i in prime_fact:
+        if i[1] < 2:
+            return False
+    return True
 
 def main():
 
@@ -85,8 +89,8 @@ def main():
             ###PRIME###
 
             #if PRIME
-            prime = simple_prime_test(n)
-            if prime == []:
+            prime_fact = simple_prime_test(n)
+            if prime_fact == []:
                 print n, "is a prime number."
                 
         
@@ -100,11 +104,12 @@ def main():
             
             ###IF NOT PRIME###
             else:
-                print "Prime Factorization: ", pretty_prime_factors(prime)
-
                 #prime factorization
+                print "Prime Factorization:", pretty_prime_factors(prime_fact)
 
                 #achilles number (all factors are squares or more)
+                if achilles(prime_fact):
+                    print "%i is an Achilles number." % n
 
                 #carmichael
                 if carmichael_test(n) == True:
