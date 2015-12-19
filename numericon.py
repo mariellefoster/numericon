@@ -34,6 +34,7 @@ def bin_rep(n):
 
 def simple_prime_test(n):
     k = int(math.sqrt(n))+1
+    n_1 = n
     factors = []
     for i in range(2, k):
         fact = 0
@@ -44,7 +45,7 @@ def simple_prime_test(n):
             factors.append((i, fact))
         if n == 1:
             return factors
-    if n > 1:
+    if n > 1 and n != n_1:
         factors.append((n, 1))
     return factors
 
@@ -97,6 +98,8 @@ def main():
                 #wilson prime
 
                 #sophie germain
+                if simple_prime_test(2*n+1) == []:
+                    print "%i is a Sophie Germain prime" % n
 
                 #prime
 
