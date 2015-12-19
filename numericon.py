@@ -62,8 +62,12 @@ def achilles(prime_fact):
             return False
     return True
 
-def main():
+def wilson(n):
+    if (math.factorial(n-1) + 1) % (n*n) == 0:
+        return True
+    return False
 
+def main():
     inpt = None
     print "Welcome to Numericon! \nPlease enter in a integer you wish to know more about. \nType q to exit. \n"
 
@@ -92,16 +96,17 @@ def main():
             #if PRIME
             prime_fact = simple_prime_test(n)
             if prime_fact == []:
-                print n, "is a prime number."
+                print n, "is a prime number"
                 
         
                 #wilson prime
+                if wilson(n):
+                    print "%i is a Wilson prime" % n
 
                 #sophie germain
                 if simple_prime_test(2*n+1) == []:
                     print "%i is a Sophie Germain prime" % n
 
-                #prime
 
                 #emirp primes
             
