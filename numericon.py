@@ -1,6 +1,10 @@
 import math
 from carmichael import *
 
+#calculates if a number is "happy"
+#ie if you repeatedly square each digit
+#and add the squares, does it end in 1 or
+#loop infinitely?
 def is_happy(n):
     h = set()
     n = str(n)
@@ -15,7 +19,7 @@ def is_happy(n):
         n = str(total)
     return True
 
-
+#binomial representation of a base 10 number
 def bin_rep(n):
     i = -1
     n1 = n
@@ -32,6 +36,7 @@ def bin_rep(n):
             bin += "0"
     return bin
 
+#brute force prime testing
 def simple_prime_test(n):
     k = int(math.sqrt(n))+1
     n_1 = n
@@ -49,6 +54,7 @@ def simple_prime_test(n):
         factors.append((n, 1))
     return factors
 
+#string formats prime factors *so pretty*
 def pretty_prime_factors(prime):
     val = ""
     for tup in prime:
@@ -150,23 +156,22 @@ def main():
                 divisor_sum(primes, powers, 0, 1, factors)
                 sum_factors = sum(factors)/2
                 
+                #perfect numbers
                 if sum_factors == n:
                     print "%i is a perfect number" % n
+                #abundant numbers
                 elif sum_factors > n:
                     print "%i is an abundant number" % n
+                #deficient numbers
                 elif sum_factors < n:
                     print "%i is a deficient number" % n
 
-                #abundant numbers
-
+        
                 #weird numbers
 
                 #untouchable numbers
 
-                #perfect numbers
-
-
-
+            
             ###OTHER###
 
                 #reciprocal base ten fraction
