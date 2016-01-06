@@ -62,10 +62,24 @@ def achilles(prime_fact):
             return False
     return True
 
+#detects if n is a wilson prime, i.e. 
+#if the factorial of n-1 plus 1 divided by n^2 is 0
 def wilson(n):
     if (math.factorial(n-1) + 1) % (n*n) == 0:
         return True
     return False
+
+
+#sigma function
+def divisor_sum(primes, powers, current_div, current_res, factors):
+    if current_div == len(primes):
+        factors.append(current_res)
+        return
+    for i in range(0, powers[current_div]+1):
+        divisor_sum(primes, powers, current_div+1, current_res, factors)
+        current_res *= primes[current_div]
+    
+
 
 def main():
     inpt = None
@@ -123,10 +137,25 @@ def main():
                 if carmichael_test(n) == True:
                     print "%i is a Carmichael number" % n
 
+                primes = [x[0] for x in prime_fact]
+                powers = [x[1] for x in prime_fact]
+
                 #amicable numbers
                 # Let's take all the proper divisors of 220 (that is to say, 
                 # all its divisors that leave no remainder, including the number 1, 
                 # and excluding the number itself) and all them up:
+                factors = []
+
+                #sigma function
+                divisor_sum(primes, powers, 0, 1, factors)
+                sum_factors = sum(factors)/2
+                
+                if sum_factors == n:
+                    print "%i is a perfect number" % n
+                elif sum_factors > n:
+                    print "%i is an abundant number" % n
+                elif sum_factors < n:
+                    print "%i is a deficient number" % n
 
                 #abundant numbers
 
@@ -135,6 +164,7 @@ def main():
                 #untouchable numbers
 
                 #perfect numbers
+
 
 
             ###OTHER###
