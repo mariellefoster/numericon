@@ -145,17 +145,14 @@ def main():
 
                 primes = [x[0] for x in prime_fact]
                 powers = [x[1] for x in prime_fact]
-
-                #amicable numbers
-                # Let's take all the proper divisors of 220 (that is to say, 
-                # all its divisors that leave no remainder, including the number 1, 
-                # and excluding the number itself) and all them up:
+                
                 factors = []
-
                 #sigma function
                 divisor_sum(primes, powers, 0, 1, factors)
-                sum_factors = sum(factors)/2
-                
+                factors.sort()
+                factors = factors[:-1]
+                sum_factors = sum(factors)
+
                 #perfect numbers
                 if sum_factors == n:
                     print "%i is a perfect number" % n
@@ -165,6 +162,31 @@ def main():
                 #deficient numbers
                 elif sum_factors < n:
                     print "%i is a deficient number" % n
+
+               
+
+                #amicable numbers
+                # Let's take all the proper divisors of 220 (that is to say, 
+                # all its divisors that leave no remainder, including the number 1, 
+                # and excluding the number itself) and all them up:
+                
+                #find the divisors of the potential amicable number
+                amicable_factorization = simple_prime_test(sum_factors)
+
+                amicable_primes = [x[0] for x in amicable_factorization]
+                amicable_powers = [x[1] for x in amicable_factorization]
+
+                amicable_factors = []
+                divisor_sum(amicable_primes, amicable_powers, 0, 1, amicable_factors)
+
+                amicable_factors.sort()
+                amicable_factors = amicable_factors[:-1]
+
+                sum_amicable = sum(amicable_factors)
+                if sum_amicable == n:
+                    print "%i and %i are an amicable number pair" % (n, sum_factors)
+
+
 
         
                 #weird numbers
