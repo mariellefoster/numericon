@@ -143,14 +143,18 @@ def main():
                 if carmichael_test(n) == True:
                     print "%i is a Carmichael number" % n
 
+                #split into primes and powers
                 primes = [x[0] for x in prime_fact]
                 powers = [x[1] for x in prime_fact]
                 
                 factors = []
                 #sigma function
                 divisor_sum(primes, powers, 0, 1, factors)
+
+                #take off n itself at the end
                 factors.sort()
                 factors = factors[:-1]
+
                 sum_factors = sum(factors)
 
                 #perfect numbers
@@ -163,8 +167,7 @@ def main():
                 elif sum_factors < n:
                     print "%i is a deficient number" % n
 
-               
-
+            
                 #amicable numbers
                 # Let's take all the proper divisors of 220 (that is to say, 
                 # all its divisors that leave no remainder, including the number 1, 
@@ -173,22 +176,23 @@ def main():
                 #find the divisors of the potential amicable number
                 amicable_factorization = simple_prime_test(sum_factors)
 
+                #split into primes and powers
                 amicable_primes = [x[0] for x in amicable_factorization]
                 amicable_powers = [x[1] for x in amicable_factorization]
 
                 amicable_factors = []
                 divisor_sum(amicable_primes, amicable_powers, 0, 1, amicable_factors)
 
+                #take off n itself at the end
                 amicable_factors.sort()
                 amicable_factors = amicable_factors[:-1]
 
+                #print pair if amicable
                 sum_amicable = sum(amicable_factors)
                 if sum_amicable == n:
                     print "%i and %i are an amicable number pair" % (n, sum_factors)
-
-
-
         
+
                 #weird numbers
 
                 #untouchable numbers
@@ -204,7 +208,6 @@ def main():
 
                 #narcissistic numbers
             print
-        #
 
 main()
 
