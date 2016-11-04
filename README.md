@@ -6,3 +6,4 @@ type 'python numericon.py' to run main file in the command line. Takes in either
 
 Not great with giant numbers, because my prime factor algorithm is quite slow (ie brute force). This will be eventually remedied.
 .
+.
